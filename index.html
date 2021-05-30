@@ -67,6 +67,66 @@
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
     // TODO - Make buttons functional
+    //Console Log Demo
+    errorBtns[0].addEventListener('click', () => {
+        console.log("Console Log Demo");
+    });
+    //Console Error Demo
+    
+    errorBtns[1].addEventListener('click', () => {
+      console.error("Console Error Demo");
+    });
+    //Console Dir
+    errorBtns[2].addEventListener('click', () => {
+        console.dir(errorBtns[2]);
+    });
+    //Console dirxml
+    errorBtns[3].addEventListener('click', () => {
+        console.dirxml(document.body);
+    });
+    //Console Group Start
+    errorBtns[4].addEventListener('click', () => {
+      console.group("Log Group");
+    }); 
+    //Console Group End
+    errorBtns[5].addEventListener('click', () => {
+      console.groupEnd("Log Group");
+    });
+    //Console Table
+    errorBtns[6].addEventListener('click', () => {
+      let cseCourse = [
+        {name: "CSE", number: 110},
+        {name: "CSE", number: 101},
+        {name: "CSE", number: 130}
+      ];
+      console.table(cseCourse);
+    });
+    //Start Timer
+    errorBtns[7].addEventListener('click', () => {
+      console.log("Timer Started!");
+      console.time();
+    });
+    //End Timer
+
+    errorBtns[8].addEventListener('click', () => {
+      console.log("Timer Ended!");
+      console.timeEnd();
+    });
+    //Console Trace
+ 
+    errorBtns[9].addEventListener('click', () => {
+      const firstTest = () => { secondTest(); };
+      const secondTest = () => { thirdTest(); };
+      const thirdTest = () => { fourthTest(); };
+      const fourthTest = () => { console.trace(); };
+      firstTest();
+    });
+    //Trigger a Global Error
+   
+    errorBtns[10].addEventListener('click', () => {
+      console.log("ERROR PLEASE RESOLVE NOW");
+    });
+    
   </script>
 </body>
 </html>
