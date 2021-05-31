@@ -65,8 +65,10 @@
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
 
+
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
     // TODO - Make buttons functional
+    /*step 2 - function to all buttons*/
     //Console Log Demo
     errorBtns[0].addEventListener('click', () => {
         console.log("Console Log Demo");
@@ -121,11 +123,47 @@
       const fourthTest = () => { console.trace(); };
       firstTest();
     });
+
+    /*step 3 - using try catch*/
+    // trying to generate an error in the a function
+    function adding(num1, num2){
+      if(!Number.isInteger(num1) && !Number.isInteger(num2)){
+        console.log("Please do Provide Integers");
+        throw 'operators are not Integers';
+      }else{
+        return (num1 + num2);
+      }
+    }
     //Trigger a Global Error
+    /*step 4*/
+    class testError extends Error {
+      constructor(message) {
+      super(message); // (1)
+      this.name = "testError"; // (2)
+      }
+    }
+    function test() {
+      throw new testError("Whoops!");
+    }
    
     errorBtns[10].addEventListener('click', () => {
-      console.log("ERROR PLEASE RESOLVE NOW");
+      try {
+        adding("Hello","World");
+      } catch(err){
+        console.error(err);
+      }finally{
+        console.log("ERROR PLEASE RESOLVE NOW, CANNOT ADD NON-INTEGERS");
+      }
+      try {
+        test();
+      } catch(err) {
+      console.log(err.message); // Whoops!
+      console.log(err.name); // ValidationError
+      console.log(err.stack); // a list of nested calls with line numbers for each
+  }
     });
+
+
     
   </script>
 </body>
